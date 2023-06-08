@@ -1,0 +1,84 @@
+{
+  "BlogPosts": [
+    {
+      "id": 1,
+      "Image": "/images/doctor.jpg",
+      "Title": "Medical Science",
+      "BodyText": "Lorem ipsum dolor sit amet GHCC consectetur. Comm. Lorem ipsum dolor sit amet GHCC consectetur. Comm"
+    },
+    {
+      "id": 2,
+      "Image": "./images/astronaut.jpg",
+      "Title": "Astronomy",
+      "BodyText": "Lorem ipsum dolor sit amet GHCC consectetur. Comm. Lorem ipsum dolor sit amet GHCC consectetur. Comm"
+    },
+    {
+      "id": 3,
+      "Image": "./images/balloon.jpg",
+      "Title": "Design",
+      "BodyText": "Lorem ipsum dolor sit amet GHCC consectetur. Comm. Lorem ipsum dolor sit amet GHCC consectetur. Comm"
+    },
+    {
+      "id": 4,
+      "Image": "./images/blurryhand.jpg",
+      "Title": "Aesthetics",
+      "BodyText": "Lorem ipsum dolor sit amet GHCC consectetur. Comm. Lorem ipsum dolor sit amet GHCC consectetur. Comm"
+    },
+    {
+      "id": 5,
+      "Image": "./images/colorful.jpg",
+      "Title": "Colors",
+      "BodyText": "Lorem ipsum dolor sit amet GHCC consectetur. Comm. Lorem ipsum dolor sit amet GHCC consectetur. Comm"
+    },
+    {
+      "id": 6,
+      "Image": "./images/computing.jpg",
+      "Title": "Computing",
+      "BodyText": "Lorem ipsum dolor sit amet GHCC consectetur. Comm. Lorem ipsum dolor sit amet GHCC consectetur. Comm"
+    }
+  ],
+  "OtherPosts": [
+    {
+      "id": 1,
+      "Image": "/images/vrglasses.jpg",
+      "Title": "Virtual Reality",
+      "Date": "Mar 16, 2023",
+      "Datetime": "2023-03-16",
+      "BodyText": "Lorem ipsum dolor sit amet GHCC consectetur. Comm. Lorem ipsum dolor sit amet GHCC consectetur. Comm"
+    },
+    {
+      "id": 2,
+      "Image": "/images/astronaut.jpg",
+      "Title": "Astronomy",
+      "Date": "Mar 16, 2023",
+      "Datetime": "2023-03-16",
+      "BodyText": "Lorem ipsum dolor sit amet GHCC consectetur. Comm. Lorem ipsum dolor sit amet GHCC consectetur. Comm"
+    },
+    {
+      "id": 3,
+      "Image": "/images/balloon.jpg",
+      "Title": "Design",
+      "Date": "Mar 16, 2023",
+      "Datetime": "2023-03-16",
+      "BodyText": "Lorem ipsum dolor sit amet GHCC consectetur. Comm. Lorem ipsum dolor sit amet GHCC consectetur. Comm"
+    }
+  ],
+
+  "SinglePosts": [
+    {
+      "id": 1,
+      "title": "Medical Science",
+      "href": "/write?edit=1",
+      "image": "/images/doctor.jpg",
+      "description": "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas neque totam dolores, hic animi soluta quo recusandae itaque eaque quas quos reiciendis at veniam nostrum velit aut sapiente, excepturi cumque sequi a dicta! Atque explicabo repellendus suscipit corporis minima laborum, dolorem vitae temporibus nostrum, magni aut praesentium quis voluptatibus voluptatem sequi quod nesciunt? Et laudantium ratione fugiat voluptas? In praesentium temporibus sed doloribus fugit distinctio esse quae ipsum laborum rerum nulla enim quod autem, iure fugiat eligendi pariatur tempora facere delectus placeat ea mollitia reiciendis incidunt. Hic reprehenderit, magnam sunt aliquam impedit eos, consequatur est ipsum, incidunt repudiandae eligendi laboriosam debitis distinctio delectus animi molestias provident.",
+      "date": "Mar 16, 2023",
+      "datetime": "2023-03-16",
+      "category": { "title": "Science" },
+      "author": {
+        "name": "Michael Foster",
+        "role": "Co-Founder / CTO",
+        "imageUrl": "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+      }
+    }
+  ]
+}
