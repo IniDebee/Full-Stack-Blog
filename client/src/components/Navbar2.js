@@ -81,6 +81,7 @@ export default function Navbar2() {
               <Link
                 onClick={logout}
                 className="text-sm font-semibold leading-6 text-gray-900"
+                to={`/`}
               >
                 Logout
               </Link>
@@ -159,6 +160,7 @@ export default function Navbar2() {
                     <Link
                       onClick={logout}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                      to={`/`}
                     >
                       Logout
                     </Link>

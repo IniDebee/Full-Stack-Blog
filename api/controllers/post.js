@@ -112,7 +112,7 @@ function updatePost(req, res) {
 
     // const postId = req.params.id;
     const q =
-      "UPDATE posts SET `title`=?,`desc`=?,`postimg`=?,`cat`=?,`date`=?,`authorname`=?,`authorrole`=?,`authorimg`=? WHERE `id` = ? AND `uid` = ?";
+      "UPDATE posts SET `title`=?, `desc`=?, `postimg`=?, `cat`=?, `date`=?, `authorname`=?, `authorrole`=?, `authorimg`=? WHERE `id` = ? AND `uid` = ?";
 
     const values = [
       req.body.title,
@@ -133,7 +133,7 @@ function updatePost(req, res) {
     db.query(q, [...values, req.params.id, userInfo.id], (err, result) => {
       console.log(err);
       if (err) return res.status(500).json(err);
-      res.json("Post Updated");
+      res.json("Post Has Been Updated");
     });
   });
   console.log(req.method, "updated Post");

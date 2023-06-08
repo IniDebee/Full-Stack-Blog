@@ -9,8 +9,8 @@ import moment from "moment";
 
 export default function Write() {
   const state = useLocation().state;
-  const [value, setValue] = useState(state?.title || "");
-  const [title, setTitle] = useState(state?.desc || "");
+  const [value, setValue] = useState(state?.desc || "");
+  const [title, setTitle] = useState(state?.title || "");
   const [file, setFile] = useState(null);
   const [cat, setCat] = useState(state?.cat || "");
 
@@ -20,30 +20,35 @@ export default function Write() {
     try {
       const formData = new FormData();
       formData.append("file", file);
-      const res = await axios.post("/upload", formData);
-      return res.data;
+      const res = await axios.post(
+        "http://localhost:3001/api/upload",
+        formData
+      );
+      // return res.data;
+      console.log(res.data);
     } catch (err) {
       console.log(err);
     }
   };
 
   const handleSubmit = async (e) => {
+    upload();
     e.preventDefault();
     const imgUrl = await upload();
 
     try {
       state
-        ? await axios.put(`/posts/${state.id}`, {
+        ? await axios.put(`http://localhost:3001/api/posts/${state.id}`, {
             title,
             desc: value,
             cat,
-            img: file ? imgUrl : "",
+            postimg: file ? imgUrl : "",
           })
-        : await axios.post(`/posts/`, {
+        : await axios.post(`http://localhost:3001/api/posts/`, {
             title,
             desc: value,
             cat,
-            img: file ? imgUrl : "",
+            postimg: file ? imgUrl : "",
             date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
           });
       navigate("/");
@@ -58,6 +63,14 @@ export default function Write() {
         <div className="bg-white py-12 sm:py-8">
           <div className="justify-center mx-auto max-w-7xl px-6 lg:px-8 xl:flex border-t border-gray-200 mt-10 sm:mt-12 xl:gap-20 text-justify">
             <div className="mx-auto mt-6 grid max-w-2xl gap-x-8 gap-y-16 pt-6 sm:mt-6 sm:pt-6 lg:mx-0 lg:max-w-none justify-center">
+              <input
+                id="text"
+                name="text"
+                type="text"
+                autoComplete="text"
+                required
+                className="block w-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
               <article className="hidden md:block max-w-xl flex-col items-start justify-between">
                 <label
                   htmlFor="text"
@@ -65,7 +78,7 @@ export default function Write() {
                 >
                   Title
                 </label>
-                <div className="mt-2">
+                <div className="mt-2 cursor-pointer">
                   <input
                     id="text"
                     name="text"
@@ -77,6 +90,7 @@ export default function Write() {
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
+
                 <div className="mt-6">
                   <label
                     htmlFor="text"
@@ -326,6 +340,7 @@ export default function Write() {
                 <div className="justify-center text-center mx-auto mt-6">
                   <Link
                     to={`#`}
+                    onClick={handleSubmit}
                     className="border border-indigo-600 px-2 py-2 text-sm font-semibold text-indigo-600 shadow-sm hover:text-white hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     Publish{" "}
