@@ -28,6 +28,7 @@ export default function Register() {
       //   inputs
       // );
       await axios.post("http://localhost:3001/api/auth/register", inputs);
+
       // console.log(res);
       navigate("/login");
     } catch (err) {

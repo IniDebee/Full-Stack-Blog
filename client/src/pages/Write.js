@@ -11,6 +11,8 @@ export default function Write() {
   const state = useLocation().state;
   const [value, setValue] = useState(state?.desc || "");
   const [title, setTitle] = useState(state?.title || "");
+  const [authorName, setAuthorName] = useState(state?.authorname || "");
+  const [authorRole, setAuthorRole] = useState(state?.authorrole || "");
   const [file, setFile] = useState(null);
   const [cat, setCat] = useState(state?.cat || "");
 
@@ -24,8 +26,8 @@ export default function Write() {
         "http://localhost:3001/api/upload",
         formData
       );
-      // return res.data;
-      console.log(res.data);
+      return res.data;
+      // console.log(res.data);
     } catch (err) {
       console.log(err);
     }
@@ -38,19 +40,35 @@ export default function Write() {
 
     try {
       state
-        ? await axios.put(`http://localhost:3001/api/posts/${state.id}`, {
-            title,
-            desc: value,
-            cat,
-            postimg: file ? imgUrl : "",
-          })
-        : await axios.post(`http://localhost:3001/api/posts/`, {
-            title,
-            desc: value,
-            cat,
-            postimg: file ? imgUrl : "",
-            date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
-          });
+        ? await axios.put(
+            `http://localhost:3001/api/posts/${state.id}`,
+            {
+              title,
+              desc: value,
+              cat,
+              authorname: authorName,
+              authorrole: authorRole,
+              postimg: file ? imgUrl : "",
+            },
+            {
+              withCredentials: true, // Includes cookies in the request
+            }
+          )
+        : await axios.post(
+            `http://localhost:3001/api/posts/`,
+            {
+              title,
+              desc: value,
+              cat,
+              authorname: authorName,
+              authorrole: authorRole,
+              postimg: file ? imgUrl : "",
+              date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+            },
+            {
+              withCredentials: true, // Includes cookies in the request
+            }
+          );
       navigate("/");
     } catch (err) {
       console.log(err);
@@ -72,21 +90,56 @@ export default function Write() {
                 className="block w-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
               <article className="hidden md:block max-w-xl flex-col items-start justify-between">
-                <label
-                  htmlFor="text"
-                  className="block text-lg font-medium text-center leading-6 text-indigo-600"
-                >
-                  Title
-                </label>
+                <div class="flex flex-wrap -mx-3 mb-6">
+                  <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label
+                      class="block uppercase tracking-wide text-indigo-600 text-sm font-bold mb-2"
+                      for="grid-author-name"
+                    >
+                      Author Name
+                    </label>
+                    <input
+                      class="appearance-none block w-full text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                      id="grid-author-name"
+                      type="text"
+                      value={authorName}
+                      placeholder="Inioluwa"
+                      onChange={(e) => setAuthorName(e.target.value)}
+                    />
+                  </div>
+                  <div class="w-full md:w-1/2 px-3">
+                    <label
+                      class="block uppercase tracking-wide text-indigo-600 text-sm font-bold mb-2"
+                      for="grid-author-role"
+                    >
+                      Author Role
+                    </label>
+                    <input
+                      class="appearance-none block w-full text-gray-600 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+                      id="grid-author-role"
+                      type="text"
+                      value={authorRole}
+                      placeholder="CEO"
+                      onChange={(e) => setAuthorRole(e.target.value)}
+                    />
+                  </div>
+                </div>
                 <div className="mt-2 cursor-pointer">
+                  <label
+                    htmlFor="text"
+                    className="block uppercase tracking-wide text-indigo-600 text-sm font-bold mb-2"
+                  >
+                    Title
+                  </label>
                   <input
                     id="text"
                     name="text"
                     type="text"
                     value={title}
+                    placeholder="Medical Science"
                     autoComplete="text"
                     required
-                    className="block w-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="appearance-none block w-full text-gray-600 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
@@ -94,7 +147,7 @@ export default function Write() {
                 <div className="mt-6">
                   <label
                     htmlFor="text"
-                    className="block text-lg font-medium text-center leading-6 text-indigo-600"
+                    className="block uppercase tracking-wide text-indigo-600 text-sm font-bold mb-2"
                   >
                     Write Up
                   </label>
@@ -109,28 +162,63 @@ export default function Write() {
                 </div>
               </article>
               <article className="block md:hidden max-w-xs flex-col items-start justify-between">
-                <label
-                  htmlFor="text"
-                  className="block text-lg font-medium text-center leading-6 text-indigo-600"
-                >
-                  Title
-                </label>
+                <div class="flex flex-wrap -mx-3 mb-6">
+                  <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label
+                      class="block uppercase tracking-wide text-indigo-600 text-sm font-bold mb-2"
+                      for="grid-author-name"
+                    >
+                      Author Name
+                    </label>
+                    <input
+                      class="appearance-none block w-full text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                      id="grid-author-name"
+                      value={authorName}
+                      type="text"
+                      placeholder="Inioluwa"
+                      onChange={(e) => setAuthorName(e.target.value)}
+                    />
+                  </div>
+                  <div class="w-full md:w-1/2 px-3">
+                    <label
+                      class="block uppercase tracking-wide text-indigo-600 text-sm font-bold mb-2"
+                      for="grid-author-role"
+                    >
+                      Author Role
+                    </label>
+                    <input
+                      class="appearance-none block w-full text-gray-600 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+                      id="grid-author-role"
+                      type="text"
+                      value={authorRole}
+                      placeholder="CEO"
+                      onChange={(e) => setAuthorRole(e.target.value)}
+                    />
+                  </div>
+                </div>
                 <div className="mt-2">
+                  <label
+                    htmlFor="text"
+                    className="block uppercase tracking-wide text-indigo-600 text-sm font-bold mb-2"
+                  >
+                    Title
+                  </label>
                   <input
                     id="text"
                     name="text"
                     type="text"
                     value={title}
                     autoComplete="text"
+                    placeholder="Medical Science"
                     required
-                    className="block w-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="appearance-none block w-full text-gray-600 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
                 <div className="mt-6">
                   <label
                     htmlFor="text"
-                    className="block text-lg font-medium text-center leading-6 text-indigo-600"
+                    className="block uppercase tracking-wide text-indigo-600 text-sm font-bold mb-2"
                   >
                     Write Up
                   </label>
@@ -189,6 +277,7 @@ export default function Write() {
                   Add Featured Image
                 </label>
                 <input
+                  // style={{ display: "none" }}
                   type="file"
                   name="file"
                   id="file"
@@ -233,9 +322,9 @@ export default function Write() {
                     type="radio"
                     name="science"
                     id="science"
-                    value="science"
+                    value="Science"
                     className="mr-2"
-                    checked={cat === "science"}
+                    checked={cat === "Science"}
                     onChange={(e) => setCat(e.target.value)}
                   />
                   <label htmlFor="science">Science</label>
@@ -246,9 +335,9 @@ export default function Write() {
                     type="radio"
                     name="design"
                     id="design"
-                    value="design"
+                    value="Design"
                     className="mr-2"
-                    checked={cat === "design"}
+                    checked={cat === "Design"}
                     onChange={(e) => setCat(e.target.value)}
                   />
                   <label htmlFor="design">Design</label>
@@ -259,9 +348,9 @@ export default function Write() {
                     type="radio"
                     name="technology"
                     id="technology"
-                    value="technology"
+                    value="Technology"
                     className="mr-2"
-                    checked={cat === "technology"}
+                    checked={cat === "Technology"}
                     onChange={(e) => setCat(e.target.value)}
                   />
                   <label htmlFor="technology">Technology</label>
@@ -357,8 +446,8 @@ export default function Write() {
                       name="science"
                       id="science"
                       className="mr-2"
-                      value="science"
-                      checked={cat === "science"}
+                      value="Science"
+                      checked={cat === "Science"}
                       onChange={(e) => setCat(e.target.value)}
                     />
                     <label htmlFor="science">Science</label>
@@ -370,8 +459,8 @@ export default function Write() {
                       name="design"
                       id="design"
                       className="mr-2"
-                      value="design"
-                      checked={cat === "design"}
+                      value="Design"
+                      checked={cat === "Design"}
                       onChange={(e) => setCat(e.target.value)}
                     />
                     <label htmlFor="design">Design</label>
@@ -383,8 +472,8 @@ export default function Write() {
                       name="technology"
                       id="technology"
                       className="mr-2"
-                      value="technology"
-                      checked={cat === "technology"}
+                      value="Technology"
+                      checked={cat === "Technology"}
                       onChange={(e) => setCat(e.target.value)}
                     />
                     <label htmlFor="technology">Technology</label>

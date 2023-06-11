@@ -6,7 +6,7 @@ import axios from "axios";
 // import moment from "moment";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
-// import DOMPurify from "dompurify";
+import DOMPurify from "dompurify";
 
 export default function Single() {
   const [post, setPost] = useState({});
@@ -32,14 +32,31 @@ export default function Single() {
     fetchData();
   }, [postId]);
 
+  // const handleDelete = async () => {
+  //   try {
+  //     await axios.delete(`http://localhost:3001/api/posts/${postId}`);
+  //     navigate("/");
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3001/api/posts/${postId}`);
+      await axios.delete(`http://localhost:3001/api/posts/${postId}`, {
+        withCredentials: true, // Includes cookies in the request
+      });
       navigate("/");
     } catch (err) {
       console.log(err);
     }
   };
+
+  const getText = (html) => {
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    return doc.body.textContent;
+  };
+
   return (
     <>
       <div className="container">
@@ -50,10 +67,14 @@ export default function Single() {
                 key={post.id}
                 className="flex max-w-xl flex-col items-start justify-between"
               >
-                <img src={post.postimg} className="mb-3" alt="..." />
+                <img
+                  src={`../upload/${post.postimg}`}
+                  className="mb-3"
+                  alt="..."
+                />
                 <div className="flex items-center gap-x-4 text-xs">
                   <time dateTime={post.date} className="text-gray-500">
-                    {post.date}
+                    Last Updated: {post.date}
                   </time>
                   {/* <p>Posted {moment(post.date).fromNow()}</p> */}
                   <p className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
@@ -66,7 +87,7 @@ export default function Single() {
                     {post.title}
                   </h3>
                   <p className="mt-5 text-sm leading-6 text-gray-600">
-                    {post.desc}
+                    {getText(post.desc)}
                   </p>
                 </div>
                 <div className="flex">

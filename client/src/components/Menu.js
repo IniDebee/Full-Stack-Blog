@@ -27,7 +27,11 @@ export default function Menu({ cat }) {
       {posts.map((post) => (
         <div className="text-justify flex gap-5 mt-5" key={post.id}>
           <div>
-            <img src={post.postimg} className="mb-3 w-32 h-24" alt="..." />
+            <img
+              src={`../upload/${post.postimg}`}
+              className="mb-3 w-32 h-24"
+              alt="..."
+            />
           </div>
           <div className="mt-4">
             <Link to={`/post/${post.id}`}>

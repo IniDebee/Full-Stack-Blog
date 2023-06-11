@@ -57,7 +57,7 @@ function addPost(req, res) {
     if (err) return res.status(403).json("Token is not valid!");
 
     const q =
-      "INSERT INTO posts(`title`, `desc`, `postimg`, `authorname`, `authorrole`, `authorimg`, `cat`, `date`,`uid`) VALUES (?)";
+      "INSERT INTO posts(`title`, `desc`, `postimg`, `cat`, `date`, `authorimg`,`authorname`, `authorrole`, `uid`) VALUES (?)";
 
     const values = [
       req.body.title,
@@ -65,9 +65,9 @@ function addPost(req, res) {
       req.body.postimg,
       req.body.cat,
       req.body.date,
+      req.body.authorimg,
       req.body.authorname,
       req.body.authorrole,
-      req.body.authorimg,
       userInfo.id,
     ];
 
@@ -99,7 +99,7 @@ function deletePost(req, res) {
 
       return res.json("Post has been deleted!");
     });
-    console.log(req.method + "d", "Post with id =", postId);
+    // console.log(req.method + "d", "Post with id =", postId);
   });
 }
 
@@ -112,7 +112,7 @@ function updatePost(req, res) {
 
     // const postId = req.params.id;
     const q =
-      "UPDATE posts SET `title`=?, `desc`=?, `postimg`=?, `cat`=?, `date`=?, `authorname`=?, `authorrole`=?, `authorimg`=? WHERE `id` = ? AND `uid` = ?";
+      "UPDATE posts SET `title`=?, `desc`=?, `postimg`=?, `cat`=?, `date`=?, `authorimg`=?, `authorname`=?, `authorrole`=? WHERE `id` = ? AND `uid` = ?";
 
     const values = [
       req.body.title,
@@ -120,9 +120,9 @@ function updatePost(req, res) {
       req.body.postimg,
       req.body.cat,
       req.body.date,
+      req.body.authorimg,
       req.body.authorname,
       req.body.authorrole,
-      req.body.authorimg,
     ];
 
     // console.log(req.body.postimg);

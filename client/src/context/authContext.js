@@ -9,11 +9,18 @@ export const AuthContextProvider = ({ children }) => {
   );
 
   const login = async (inputs) => {
-    const res = await axios.post(
-      "http://localhost:3001/api/auth/login",
-      inputs
-    );
-    setCurrentUser(res.data);
+    try {
+      const res = await axios.post(
+        "http://localhost:3001/api/auth/login",
+        inputs,
+        {
+          withCredentials: true, // Include cookies in the request
+        }
+      );
+      setCurrentUser(res.data);
+    } catch (error) {
+      // Handle the error
+    }
   };
 
   const logout = async (inputs) => {

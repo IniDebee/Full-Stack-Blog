@@ -5,7 +5,7 @@ import "../App.css";
 export default function Footer() {
   return (
     <>
-      <div className="container mx-auto justify-center content-center mt-6">
+      <div className="container mx-auto justify-center content-center mt-24">
         <footer className="justify-center content-center items-center">
           <div>
             <img
