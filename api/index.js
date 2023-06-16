@@ -27,8 +27,7 @@ app.options("*", function (req, res) {
   res.sendStatus(200);
 });
 
-// const PORT = process.env.port || 3001;
-const PORT = 3001;
+const PORT = process.env.port || 3001;
 app.use(express.json());
 app.use(cookieParser());
 
