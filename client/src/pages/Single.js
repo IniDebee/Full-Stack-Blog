@@ -60,7 +60,7 @@ export default function Single() {
   return (
     <>
       <div className="container">
-        <div className="bg-white pt-24">
+        <div className="pt-24">
           <div className="mx-auto max-w-7xl px-6 lg:px-8 sm:flex border-t border-gray-200 gap-20 text-justify">
             <div className="mx-auto mt-6 grid max-w-2xl gap-x-8 gap-y-16 pt-6 sm:mt-8 sm:pt-8 lg:mx-0 lg:max-w-none">
               <article

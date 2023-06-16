@@ -78,18 +78,18 @@ export default function Write() {
   return (
     <>
       <div className="container">
-        <div className="bg-white py-12 sm:py-8">
+        <div className="py-12 sm:py-8">
           <div className="justify-center mx-auto max-w-7xl px-6 lg:px-8 xl:flex border-t border-gray-200 mt-10 sm:mt-12 xl:gap-20 text-justify">
             <div className="mx-auto mt-6 grid max-w-2xl gap-x-8 gap-y-16 pt-6 sm:mt-6 sm:pt-6 lg:mx-0 lg:max-w-none justify-center">
-              <input
+              {/* <input
                 id="text"
                 name="text"
                 type="text"
                 autoComplete="text"
                 required
                 className="block w-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-              <article className="hidden md:block max-w-xl flex-col items-start justify-between">
+              /> */}
+              <article className="hidden md:block max-w-xl flex-col items-start justify-between pt-24">
                 <div class="flex flex-wrap -mx-3 mb-6">
                   <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label
@@ -161,7 +161,7 @@ export default function Write() {
                   </div>
                 </div>
               </article>
-              <article className="block md:hidden max-w-xs flex-col items-start justify-between">
+              <article className="block md:hidden max-w-xs flex-col items-start justify-between pt-24">
                 <div class="flex flex-wrap -mx-3 mb-6">
                   <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label
@@ -233,7 +233,7 @@ export default function Write() {
                 </div>
               </article>
             </div>
-            <div className="mx-auto max-w-2xl mt-10 pt-10 sm:mt-5 sm:pt-5 hidden sm:block justify-center text-center">
+            <div className="mx-auto max-w-2xl mt-10 pt-10 sm:mt-10 sm:pt-10 xl:pt-24 hidden sm:block items-center justify-center text-center">
               <h2 className="text-xl font-bold tracking-tight text-gray-900 sm:text-2xl lg:text-3xl">
                 Publish Post
               </h2>
@@ -241,7 +241,7 @@ export default function Write() {
                 Learn how to grow your business with our expert advice.
               </p>
 
-              <div className="flex text-center justify-center mx-auto ">
+              <div className="flex text-center justify-center mx-auto">
                 <div className="flex mt-2">
                   <span
                     htmlFor="text"
@@ -249,11 +249,6 @@ export default function Write() {
                   >
                     <b className="text-gray-600">Status:</b> Draft
                   </span>
-                  {/* <p className="mt-2 text-md leading-8 text-gray-600">Draft</p> */}
-                  {/* <select id="status" name="status" className="h-12 rounded-lg">
-                    <option value="draft">Draft</option>
-                    <option value="archive">Archives</option>
-                  </select> */}
                 </div>
                 <div className="flex mt-2">
                   <span
@@ -262,14 +257,9 @@ export default function Write() {
                   >
                     <b className="text-gray-600">Visibility:</b> Public
                   </span>
-                  {/* <p className="mt-2 text-md leading-8 text-gray-600">Draft</p> */}
-                  {/* <select id="status" name="status" className="h-12 rounded-lg">
-                    <option value="public">Public</option>
-                    <option value="private">Private</option>
-                  </select> */}
                 </div>
               </div>
-              <div className="">
+              <div className="text-center justify-center mx-auto">
                 <label
                   htmlFor="text"
                   className="mt-4 block text-md font-medium leading-6 text-indigo-600"
@@ -313,43 +303,43 @@ export default function Write() {
                 </div>
               </div>
 
-              <div className="mt-8">
+              <div className="mt-8 text-center justify-center mx-auto items-center">
                 <h2 className="text-xl mb-2 font-bold tracking-tight text-gray-900 sm:text-2xl lg:text-3xl">
                   Select Category
                 </h2>
-                <div className="cat">
+                <div className="cat mr-14">
                   <input
                     type="radio"
                     name="science"
                     id="science"
                     value="Science"
-                    className="mr-2"
+                    className="mr-5"
                     checked={cat === "Science"}
                     onChange={(e) => setCat(e.target.value)}
                   />
                   <label htmlFor="science">Science</label>
                   <br />
                 </div>
-                <div className="cat">
+                <div className="cat mr-16">
                   <input
                     type="radio"
                     name="design"
                     id="design"
                     value="Design"
-                    className="mr-2"
+                    className="mr-5"
                     checked={cat === "Design"}
                     onChange={(e) => setCat(e.target.value)}
                   />
                   <label htmlFor="design">Design</label>
                   <br />
                 </div>
-                <div className="cat ml-8">
+                <div className="cat mr-8">
                   <input
                     type="radio"
                     name="technology"
                     id="technology"
                     value="Technology"
-                    className="mr-2"
+                    className="mr-5"
                     checked={cat === "Technology"}
                     onChange={(e) => setCat(e.target.value)}
                   />
@@ -358,7 +348,7 @@ export default function Write() {
                 </div>
               </div>
             </div>
-            <div className="mx-auto max-w-2xl mt-10 pt-10 sm:mt-5 sm:pt-5 block sm:hidden justify-center text-center">
+            <div className="mx-auto max-w-2xl mt-10 pt-10 sm:mt-10 sm:pt-10 block sm:hidden justify-center items-center text-center">
               <h2 className="text-xl font-bold tracking-tight text-gray-900 sm:text-2xl lg:text-3xl">
                 Publish Post
               </h2>
@@ -374,26 +364,16 @@ export default function Write() {
                   >
                     <b className="text-gray-600">Status:</b> Draft
                   </span>
-                  {/* <p className="mt-2 text-md leading-8 text-gray-600">Draft</p> */}
-                  {/* <select id="status" name="status" className="h-12 rounded-lg">
-                    <option value="draft">Draft</option>
-                    <option value="archive">Archives</option>
-                  </select> */}
                 </div>
-                <div className="flex mt-3 text-center justify-center">
+                <div className="flex mt-3 text-center justify-center mx-auto">
                   <span
                     htmlFor="text"
                     className="mr-3 mt-2 block text-sm font-medium leading-6 text-indigo-600"
                   >
                     <b className="text-gray-600">Visibility:</b> Public
                   </span>
-                  {/* <p className="mt-2 text-md leading-8 text-gray-600">Draft</p> */}
-                  {/* <select id="status" name="status" className="h-12 rounded-lg">
-                    <option value="public">Public</option>
-                    <option value="private">Private</option>
-                  </select> */}
                 </div>
-                <div className="">
+                <div className="text-center items-center justify-center mx-auto">
                   <label
                     htmlFor="text"
                     className="mt-5 block text-sm font-medium leading-6 text-indigo-600"
@@ -426,7 +406,7 @@ export default function Write() {
                     </Link>
                   </div>
                 </div>
-                <div className="justify-center text-center mx-auto mt-6">
+                <div className="justify-center text-center items-center mx-auto mt-6">
                   <Link
                     to={`#`}
                     onClick={handleSubmit}
@@ -436,16 +416,16 @@ export default function Write() {
                   </Link>
                 </div>
 
-                <div className="mt-8">
+                <div className="mt-8 text-center items-center justify-center mx-auto">
                   <h2 className="text-xl mb-2 font-bold tracking-tight text-gray-900 sm:text-2xl lg:text-3xl">
                     Select Category
                   </h2>
-                  <div className="cat">
+                  <div className="cat mr-14">
                     <input
                       type="radio"
                       name="science"
                       id="science"
-                      className="mr-2"
+                      className="mr-5"
                       value="Science"
                       checked={cat === "Science"}
                       onChange={(e) => setCat(e.target.value)}
@@ -453,12 +433,12 @@ export default function Write() {
                     <label htmlFor="science">Science</label>
                     <br />
                   </div>
-                  <div className="cat">
+                  <div className="cat mr-16">
                     <input
                       type="radio"
                       name="design"
                       id="design"
-                      className="mr-2"
+                      className="mr-5"
                       value="Design"
                       checked={cat === "Design"}
                       onChange={(e) => setCat(e.target.value)}
@@ -466,12 +446,12 @@ export default function Write() {
                     <label htmlFor="design">Design</label>
                     <br />
                   </div>
-                  <div className="cat ml-8">
+                  <div className="cat mr-8">
                     <input
                       type="radio"
                       name="technology"
                       id="technology"
-                      className="mr-2"
+                      className="mr-5"
                       value="Technology"
                       checked={cat === "Technology"}
                       onChange={(e) => setCat(e.target.value)}
