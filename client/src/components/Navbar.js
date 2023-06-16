@@ -23,8 +23,8 @@ export default function Navbar() {
   };
 
   return (
-    <div className="bg-white w-screen">
-      <div className="bg-cover h-full w-auto">
+    <div className="bg-white">
+      <div className="bg-cover bg-fixed w-screen h-full">
         <img src="/images/bgimage.jpg" alt="" />
       </div>
       <header className="absolute inset-x-0 top-0 z-50">
@@ -95,17 +95,6 @@ export default function Navbar() {
               </Link>
             )}
           </div>
-          {/* <div className="hidden lg:flex lg:gap-x-12">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-sm font-semibold leading-6 text-gray-900"
-              >
-                {item.name}
-              </a>
-            ))}
-          </div> */}
 
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <Link
