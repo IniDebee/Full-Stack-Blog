@@ -24,9 +24,12 @@ export default function Navbar() {
 
   return (
     <div className="bg-white">
-      <div className="bg-cover bg-fixed w-screen h-full">
+      <div className="bg-cover w-auto h-full">
         <img src="/images/bgimage.jpg" alt="" />
       </div>
+      {/* <div className="hidden sm:block">
+        <img src="/images/bgimage.jpg" alt="" />
+      </div> */}
       <header className="absolute inset-x-0 top-0 z-50">
         <nav
           className="flex items-center justify-between p-6 lg:px-8"
