@@ -27,7 +27,10 @@ export default function Register() {
       //   "http://localhost:3001/api/auth/register",
       //   inputs
       // );
-      await axios.post("http://localhost:3001/api/auth/register", inputs);
+      await axios.post(
+        "https://blog-app-api-et6g.onrender.com/api/auth/register",
+        inputs
+      );
 
       // console.log(res);
       navigate("/login");

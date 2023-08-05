@@ -23,7 +23,7 @@ export default function Write() {
       const formData = new FormData();
       formData.append("file", file);
       const res = await axios.post(
-        "http://localhost:3001/api/upload",
+        "https://blog-app-api-et6g.onrender.com/api/upload",
         formData
       );
       return res.data;
@@ -41,7 +41,7 @@ export default function Write() {
     try {
       state
         ? await axios.put(
-            `http://localhost:3001/api/posts/${state.id}`,
+            `https://blog-app-api-et6g.onrender.com/api/posts/${state.id}`,
             {
               title,
               desc: value,
@@ -55,7 +55,7 @@ export default function Write() {
             }
           )
         : await axios.post(
-            `http://localhost:3001/api/posts/`,
+            `https://blog-app-api-et6g.onrender.com/api/posts/`,
             {
               title,
               desc: value,

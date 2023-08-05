@@ -15,7 +15,9 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:3001/api/posts${cat}`);
+        const res = await axios.get(
+          `https://blog-app-api-et6g.onrender.com/api/posts${cat}`
+        );
         setPosts(res.data);
       } catch (err) {
         console.log(err);

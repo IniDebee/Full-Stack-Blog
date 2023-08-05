@@ -22,7 +22,7 @@ export default function Single() {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3001/api/posts/${postId}`
+          `https://blog-app-api-et6g.onrender.com/api/posts/${postId}`
         );
         setPost(res.data);
       } catch (err) {
@@ -43,9 +43,12 @@ export default function Single() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3001/api/posts/${postId}`, {
-        withCredentials: true, // Includes cookies in the request
-      });
+      await axios.delete(
+        `https://blog-app-api-et6g.onrender.com/api/posts/${postId}`,
+        {
+          withCredentials: true, // Includes cookies in the request
+        }
+      );
       navigate("/");
     } catch (err) {
       console.log(err);
